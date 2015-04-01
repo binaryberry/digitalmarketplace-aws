@@ -45,6 +45,10 @@
     "HostedZoneName": {
       "Type": "String",
       "Description": "Route53 hosted zone name to serve the Beanstalk environment from"
+    },
+    "IamCertificateId": {
+      "Type": "String",
+      "Description": "ID of IAM SSL certificate"
     }
   },
 
@@ -129,6 +133,28 @@
             "Namespace": "aws:elb:loadbalancer",
             "OptionName": "CrossZone",
             "Value": true
+          },
+          {
+            "Namespace": "aws:elb:loadbalancer",
+            "OptionName": "LoadBalancerHTTPPort",
+            "Value": "OFF"
+          },
+          {
+            "Namespace": "aws:elb:loadbalancer",
+            "OptionName": "LoadBalancerHTTPSPort",
+            "Value": "443"
+          },
+          {
+            "Namespace": "aws:elb:loadbalancer",
+            "OptionName": "SSLCertificateId",
+            "Value": {
+              "Fn::Join": ["",[
+                "arn:aws:iam::",
+                {"Ref": "AWS::AccountId"},
+                ":server-certificate/",
+                {"Ref": "IamCertificateId"}
+              ]]
+            }
           },
           {
             "Namespace": "aws:autoscaling:launchconfiguration",

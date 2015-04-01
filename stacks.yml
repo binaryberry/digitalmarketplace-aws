@@ -76,6 +76,7 @@ api:
 
     Domain: "{{ stage }}-{{ environment }}-api.{{ root_domain }}"
     HostedZoneName: "{{ stacks.route53zone.outputs.HostedZoneName }}"
+    IamCertificateId: "{{ iam_certificate_id }}"
 
 database_dev_access:
   name: "digitalmarketplace-api-{{ stage }}-{{ environment }}-dev-access"
@@ -144,6 +145,7 @@ search_api:
 
     Domain: "{{ stage }}-{{ environment }}-search-api.{{ root_domain }}"
     HostedZoneName: "{{ stacks.route53zone.outputs.HostedZoneName }}"
+    IamCertificateId: "{{ iam_certificate_id }}"
 
 admin_frontend_app:
   name: "digitalmarketplace-admin-frontend-app"
@@ -179,3 +181,4 @@ admin_frontend:
 
     Subdomain: "{{ stage }}-{{ environment }}-admin.{{ root_domain }}"
     HostedZoneName: "{{ stacks.route53zone.outputs.HostedZoneName }}"
+    IamCertificateId: "{{ iam_certificate_id }}"

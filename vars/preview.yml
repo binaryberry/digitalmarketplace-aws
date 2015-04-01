@@ -1,5 +1,6 @@
 ---
 root_domain: "development.digitalmarketplace.service.gov.uk"
+iam_certificate_id: ""
 subnets:
   - subnet-bf8c5ce6
   - subnet-916bfcf4
